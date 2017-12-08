@@ -67,8 +67,10 @@ int main()
     int count;
     ifstream oldRecord("Record.txt");
     oldRecord >> tOld;
-    cout << tOld << endl;
-    
+    cout <<"Current record: " << tOld << " seconds." << endl;
+    count = 0;
+    while(count <1)
+    {
     vector <int> tempVector;
     cout << "Sort the numbers from greatest to least and try for the fastest time." << endl;
     RandomArrays randomArray;
@@ -128,6 +130,7 @@ int main()
         {
             count++;
         }
+    }
     }
 
     return 0;
