@@ -8,6 +8,39 @@
 using namespace std;
 typedef chrono::high_resolution_clock Clock;
 
+class RandomArrays
+{
+    public:
+//===================================================================//
+        RandomArrays()
+        {
+            srand( time(NULL));
+            for (int i = 0; i < 10; i++)
+            {
+                randomNumber = rand() % 1000 + 1;
+                array[i] = randomNumber;
+            }
+        }
+//===================================================================//
+        int getArrayValue(int i)
+        {
+            int temp = array[i];
+            return temp;
+        };
+//===================================================================//
+        int checkArray(int x)
+        {
+            y = x;
+            cout << "Number " << y << ": " << array[y] << endl;
+        }
+    
+    private:
+        int y;
+        int array[10];
+        int randomNumber;
+        int sortedArray[10];
+};
+
 vector <int> arraySorter(vector <int > num)
 {
      int i, j;
@@ -96,14 +129,6 @@ int main()
             count++;
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
 
     return 0;
 }
