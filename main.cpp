@@ -5,10 +5,11 @@
 #include <vector>
 #include <chrono>
 #include <fstream>
+#include "RandomArrays.h"
 using namespace std;
 typedef chrono::high_resolution_clock Clock;
 
-class RandomArrays
+/*class RandomArrays
 {
     public:
 //===================================================================//
@@ -33,26 +34,41 @@ class RandomArrays
             y = x;
             cout << "Number " << y << ": " << array[y] << endl;
         }
-    
+
     private:
         int y;
         int array[10];
         int randomNumber;
         int sortedArray[10];
-};
+}; */
 
+void saveRecord(int x)
+{
+    cout << "Congradulations, you set the new record!" << endl;
+    ofstream newRecord("Record.txt");
+    newRecord << x << endl;
+}
+
+int loadRecord()
+{
+    int x;
+    ifstream oldRecord("Record.txt");
+    oldRecord >> x;
+    cout <<"Current record: " << x << " seconds." << endl;
+    return x;
+}
 vector <int> arraySorter(vector <int > num)
 {
      int i, j;
-     int temp;   // holding variable
-     int numLength = num.size( ); 
-     for (i=0; i< (numLength -1); i++)    // element to be compared
+     int temp;
+     int numLength = num.size( );
+    for (i=0; i< (numLength -1); i++)
     {
-          for(j = (i+1); j < numLength; j++)   // rest of the elements
+         for(j = (i+1); j < numLength; j++)
          {
-                if (num[i] < num[j])          // descending order
+               if (num[i] < num[j])
                {
-                        temp= num[i];          // swap
+                        temp= num[i];
                         num[i] = num[j];
                         num[j] = temp;
                }
@@ -65,32 +81,30 @@ int main()
 {
     int tOld;
     int count;
-    ifstream oldRecord("Record.txt");
-    oldRecord >> tOld;
-    cout <<"Current record: " << tOld << " seconds." << endl;
     count = 0;
     while(count <1)
     {
+    tOld = loadRecord();
     vector <int> tempVector;
     cout << "Sort the numbers from greatest to least and try for the fastest time." << endl;
     RandomArrays randomArray;
     for (int i = 0; i < 10; i++)
     {
         randomArray.checkArray(i);
-        
-        
+
+
     }
-    
+
     auto t1 = Clock::now();
-    
+
     for (int i = 0; i < 10; i++)
     {
         int temp = randomArray.getArrayValue(i);
         tempVector.push_back(temp);
-        
+
     }
     vector <int> sortedVector = arraySorter(tempVector);
-    
+
     int i = 0;
     while(i < 10)
     {
@@ -112,10 +126,9 @@ int main()
     cout << "Your time was: " << tNew << " seconds." << endl;
     if (tNew < tOld)
     {
-        cout << "Congradulations, you set the new record!" << endl;
-        ofstream newRecord("Record.txt");
-        newRecord << tNew << endl;
-        
+        saveRecord(tNew);
+        count++;
+
     }
     else
     {
@@ -126,7 +139,7 @@ int main()
         {
             cout << "You selected to play again!." << endl;
         }
-        else 
+        else
         {
             count++;
         }
