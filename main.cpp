@@ -9,8 +9,8 @@
 using namespace std;
 typedef chrono::high_resolution_clock Clock;
 
-//class commented out, class .h and .cpp files used instead
-/*class RandomArrays
+
+/*class RandomArrays //class commented out, class .h and .cpp files used instead
 {
     public:
 //===================================================================//
@@ -43,15 +43,13 @@ typedef chrono::high_resolution_clock Clock;
         int sortedArray[10];
 }; */
 
-//This function saves the Record 
-void saveRecord(int x) //int x = record time (in seconds)
+void saveRecord(int x) //int x = record time (in seconds) //This function saves the Record 
 {
     cout << "Congradulations, you set the new record!" << endl;
     ofstream newRecord("Record.txt"); //Outputs the new record to file Record.txt
     newRecord << x << endl;
 }
-//This function loads the Record
-int loadRecord()
+int loadRecord()//This function loads the Record
 {
     int x; //Value used to store the record being brought in
     ifstream oldRecord("Record.txt"); //Opens Record.txt
@@ -59,8 +57,7 @@ int loadRecord()
     cout <<"Current record: " << x << " seconds." << endl; //Displays the record for the user
     return x;
 }
-//This function is used to sort the values in the array into a vector of the same size
-vector <int> arraySorter(vector <int > num)
+vector <int> arraySorter(vector <int > num)//This function is used to sort the values in the array into a vector of the same size
 {
      int i, j; // integers used for iteration
      int temp; // integer used to temporarily store the value of the first array being compared
